@@ -71,6 +71,7 @@ def detect_faces_and_speakers(input_video_path, output_video_path):
         MaxDif = 0
         Add = []
         face_found = False
+        x, y, x1, y1 = 0, 0, 0, 0  # Initialize to prevent UnboundLocalError
         for i in range(detections.shape[2]):
             confidence = detections[0, 0, i, 2]
             if confidence > 0.3:  # Confidence threshold
@@ -109,8 +110,10 @@ def detect_faces_and_speakers(input_video_path, output_video_path):
                 if lip_distance >= MaxDif:
                     break
 
-        if face_found:
-            Frames.append([x, y, x1, y1])
+        if face_found and Add:
+            # Use the face with maximum lip movement (most likely speaker)
+            best_face = max(Add, key=lambda f: f[1])
+            Frames.append(best_face[0])  # Append [x, y, x1, y1]
         else:
             # If no face detected, append previous frame's values or None
             if len(Frames) > 0:
