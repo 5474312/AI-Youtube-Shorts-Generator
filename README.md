@@ -21,7 +21,7 @@ AI-powered tool to automatically generate engaging YouTube Shorts from long-form
 
 ## Quick Start (No Setup)
 
-Want to skip the installation? Try the [hosted API](https://muapi.ai/playground/ai-clipping) - same AI clipping with faster processing and no dependencies to manage.
+Want better results without the setup? The [AI Clipping API](https://muapi.ai/playground/ai-clipping) offers improved clip selection, faster processing, and no dependencies to manage.
 
 ---
 
@@ -266,8 +266,8 @@ grep 'pattern="@\*"' /etc/ImageMagick-6/policy.xml
 - For screen recordings, automatic motion tracking applies
 - Low-resolution videos may have less reliable detection
 
-### Still Having Issues?
-If setup is too complex or results aren't meeting expectations, the [cloud API version](https://muapi.ai/playground/ai-clipping) handles all the infrastructure and often produces better clips.
+### Looking for Better Results?
+The [AI Clipping API](https://muapi.ai/playground/ai-clipping) uses an improved algorithm that produces higher-quality clips with better highlight detection.
 
 ## Contributing
 
