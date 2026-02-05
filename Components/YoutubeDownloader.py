@@ -61,6 +61,9 @@ def download_youtube_video(url):
         if not os.path.exists('videos'):
             os.makedirs('videos')
 
+        # Sanitize title for use in filename (remove invalid characters)
+        safe_title = yt.title.replace("|", "-").replace(":", "-").replace("?", "").replace("*", "").replace("<", "").replace(">", "").replace('"', "").replace("/", "-").replace("\\", "-")
+
         print(f"Downloading video: {yt.title}")
         video_file = selected_stream.download(output_path='videos', filename_prefix="video_")
 
@@ -69,7 +72,7 @@ def download_youtube_video(url):
             audio_file = audio_stream.download(output_path='videos', filename_prefix="audio_")
 
             print("Merging video and audio...")
-            output_file = os.path.join('videos', f"{yt.title}.mp4")
+            output_file = os.path.join('videos', f"{safe_title}.mp4")
             stream = ffmpeg.input(video_file)
             audio = ffmpeg.input(audio_file)
             stream = ffmpeg.output(stream, audio, output_file, vcodec='libx264', acodec='aac', strict='experimental')
